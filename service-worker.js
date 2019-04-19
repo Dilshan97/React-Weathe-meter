@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/React-Weathe-meter/precache-manifest.619859747d6ae9528a56d5e1d987f99d.js"
+  "/React-Weather-meter/precache-manifest.b02a7e86d7f05dc732675f5ad9227a38.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/React-Weathe-meter/index.html", {
+workbox.routing.registerNavigationRoute("/React-Weather-meter/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
