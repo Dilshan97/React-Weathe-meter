@@ -8,7 +8,7 @@ class Form extends Component{
             <form onSubmit={this.props.getWeather}>
 
                 <div className="mdl-textfield mdl-js-textfield">
-                  <input className="mdl-textfield__input" type="text" name="city" value="Homagama"/>
+                  <input className="mdl-textfield__input" type="text" name="city"/>
                   <label className="mdl-textfield__label">Type your City</label>
                 </div>
 

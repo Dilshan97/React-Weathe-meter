@@ -26,6 +26,8 @@ class App extends Component {
       icon: undefined,
       error: undefined
     }
+
+    this.getWeather_onload();
   }
 
   getWeather = async (e) => {
@@ -56,8 +58,34 @@ class App extends Component {
     })
   }
 
+  getWeather_onload = async () => {
+    const api_all = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=kottawa,lk&appid=8a1e7f96689eacff4a4cef41c5cc1901&units=metric`);
+    const data = await api_all.json();
+    console.log(data);
+
+    this.setState({
+      temperture: data.main.temp,
+      city: data.name,
+      country: data.sys.country,
+      humidity: data.main.humidity,
+      description: data.weather[0].description,
+      icon: data.weather[0].icon,
+      pressure: data.main.pressure,
+      temp_min: data.main.temp_min,
+      temp_max: data.main.temp_max,
+      wind: data.wind.speed,
+      deg: data.wind.deg,
+      sunrise: data.sys.sunrise,
+      sunset: data.sys.sunset,
+      lon: data.coord.lon,
+      lat: data.coord.lat,
+      error: ""
+    })
+  }
+
   render() {
     return (
+      
       <div className="mdl-grid">
         <div className="mdl-cell mdl-cell--4-col"></div>
 
@@ -86,11 +114,13 @@ class App extends Component {
                     sunrise = {this.state.sunrise}
                     sunset = {this.state.sunset}
                     pressure = {this.state.pressure}
+                    wind = {this.state.wind}
+                    deg = {this.state.deg}
                   />
               </div>
-
-            <div className="mdl-card__menu">
-                
+              
+              <div className="mdl-card__actions mdl-card--border" id="footer">
+              <a  id="github" className="mdl-navigation__link" href="https://github.com/Dilshan97/React-Weather-meter" target="_blank"><i className="fab fa-lg fa-github"></i></a>
             </div>
 
           </div>

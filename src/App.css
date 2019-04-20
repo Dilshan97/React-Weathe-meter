@@ -18,4 +18,10 @@
       margin-top:80px; 
   }
 
-  
+  .desc{
+    margin-top: -20px;
+  }
+
+  #footer{
+    align-items: center;
+  }

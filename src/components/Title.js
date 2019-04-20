@@ -6,7 +6,7 @@ class Title extends Component {
       <div>
           <h4>{`Weather in ${this.props.city}`},{this.props.country}</h4>
           <h1><img src={`img/${this.props.icon}.png`}/>{this.props.temperture} &#8451;</h1>
-          <h6>{this.props.description}</h6>
+          <h6 className="desc">{this.props.description}</h6>
       </div>
       
     );
