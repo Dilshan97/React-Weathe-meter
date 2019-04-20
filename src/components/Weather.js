@@ -5,13 +5,26 @@ class Weather extends Component{
 
     render() {
        return(
-            <div>
-                {this.props.temperture}<br/>
-                {this.props.city}<br/>
-                {this.props.country}<br/>
-                {this.props.humidity}<br/>
-                {this.props.description}<br/>
-            </div>
+        <table className="mdl-data-table mdl-js-data-table">
+            <tbody>
+                <tr>
+                    <td className="mdl-data-table__cell--non-numeric">Humidity</td>
+                    <td>{this.props.humidity} %</td>
+                </tr>
+                <tr>
+                    <td className="mdl-data-table__cell--non-numeric">Pressure</td>
+                    <td>{this.props.pressure} hpa</td>
+                </tr>
+                <tr>
+                    <td className="mdl-data-table__cell--non-numeric">Sunrise</td>
+                    <td>29</td>
+                </tr>
+                <tr>
+                    <td className="mdl-data-table__cell--non-numeric">Sunset</td>
+                    <td>{this.props.sunset}</td>
+                </tr>
+            </tbody>
+        </table>
        ); 
     }
 }

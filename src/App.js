@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
 import './App.css';
-import Title from "./components/Title";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
+import Title from "./components/Title";
 
 class App extends Component {
 
   constructor(props){
     super(props);
-    //this.getWeather();
     this.state = {
-      temperture: undefined,
+      temperture: '00.0',
       city: undefined,
       country: undefined,
       humidity: undefined,
-      description: undefined,
+      description: "",
+      pressure: undefined,
+      temp_min: undefined,
+      temp_max: undefined,
+      wind: undefined,
+      deg: undefined,
+      sunrise: undefined,
+      sunset: undefined,
+      lon: undefined,
+      lat: undefined,
+      icon: undefined,
       error: undefined
     }
   }
@@ -33,24 +42,61 @@ class App extends Component {
       country: data.sys.country,
       humidity: data.main.humidity,
       description: data.weather[0].description,
+      icon: data.weather[0].icon,
+      pressure: data.main.pressure,
+      temp_min: data.main.temp_min,
+      temp_max: data.main.temp_max,
+      wind: data.wind.speed,
+      deg: data.wind.deg,
+      sunrise: data.sys.sunrise,
+      sunset: data.sys.sunset,
+      lon: data.coord.lon,
+      lat: data.coord.lat,
       error: ""
     })
   }
 
   render() {
     return (
-      <div>
-        <Title/>
-        <Form getWeather={this.getWeather}/>
-        <Weather
-          temperture = {this.state.temperture}
-          city = {this.state.city}
-          country = {this.state.country}
-          humidity = {this.state.humidity}
-          description ={this.state.description}
-          error = {this.state.error}
-        />
-      </div>  
+      <div className="mdl-grid">
+        <div className="mdl-cell mdl-cell--4-col"></div>
+
+        <div className="mdl-cell mdl-cell--4-col" id="col_3">
+            <div className="demo-card-wide mdl-card mdl-shadow--2dp">
+              <div className="mdl-card__title">
+                <h2 className="mdl-card__title-text"><b>Weather Forcast</b></h2>
+              </div>
+
+              <div className="mdl-card__supporting-text">
+
+                  <Title 
+                    temperture = {this.state.temperture}
+                    description ={this.state.description}
+                    icon = {this.state.icon}
+                    city = {this.state.city}
+                    country = {this.state.country}
+                    /> 
+
+                  <Form getWeather={this.getWeather}/>
+                  
+                  <Weather
+                    temperture = {this.state.temperture}
+                    humidity = {this.state.humidity}
+                    error = {this.state.error}
+                    sunrise = {this.state.sunrise}
+                    sunset = {this.state.sunset}
+                    pressure = {this.state.pressure}
+                  />
+              </div>
+
+            <div className="mdl-card__menu">
+                
+            </div>
+
+          </div>
+        </div>
+    </div>
+    
     );
   }
 }
